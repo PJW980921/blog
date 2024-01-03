@@ -1,11 +1,12 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from "next/link";
 
-export default function Detail() {
+export default function Edit () {
   const [post, setPost] = useState([]);
   const router = useRouter();
-  
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('/api/post');
@@ -14,23 +15,27 @@ export default function Detail() {
     }
     fetchData();
   }, []);
-
   const postFilter = post.filter((item)=> router.query.id === item._id)
-
-  return (
+  
+  return(
     <div>
-      <h4>상세 페이지</h4>
-    {
+      <h4>글 수정하기</h4>
+      {
       postFilter.map((item)=>{
         return(
           <div>
-            <h4>{item.title}</h4>
-            <p>{item.content}</p>
+            <form action='/api/post/edit' method='POST'>
+            <input name='title' defaultValue={item.title}/>
+            <input name='content' defaultValue={item.content}/>
+            <input style={{display:'none'}} name='_id' defaultValue={item._id.toString()}/>
+            <button type='submit'>수정</button>
+            </form>
+            <Link href={`/List`}><button>취소</button></Link>
           </div>
         )
       })
       }
     
     </div>
-  );
+  )
 }

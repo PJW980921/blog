@@ -19,6 +19,7 @@ export default function List() {
         <div className="list-item" key={i}>
           <Link href={`/detail/${item._id}`}> <h4>{item.title}</h4>
           </Link>
+          <Link href={`/edit/${item._id}`}>📝 수정하기</Link>
           <p>{item.content}</p>
         </div>
       ))}
