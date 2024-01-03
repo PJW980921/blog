@@ -13,15 +13,12 @@ export default function List() {
   }, []);
   return (
     <div className="list-bg">
-        {post.map((item) => {
-          return(      
-          <div className="list-item" key={item}>
+      {post.map((item) => (
+        <div className="list-item" key={item}>
           <h4>{item.title}</h4>
           <p>{item.content}</p>
-          </div>
-          )
-        })
-      }
+        </div>
+      ))}
     </div>
   );
 }
