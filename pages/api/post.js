@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 export default async function handler(req, res) {
  const url = 'mongodb+srv://admin:blog1644@cluster0.ebcae3z.mongodb.net/';
 const client = new MongoClient(url);
@@ -13,3 +13,6 @@ res.status(200).json(posts);
  await client.close();
 }
 }
+
+
+

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Link from "next/link";
 import React from 'react';
 
 export default function List() {
@@ -11,11 +12,13 @@ export default function List() {
     }
     fetchData();
   }, []);
+  
   return (
     <div className="list-bg">
-      {post.map((item) => (
-        <div className="list-item" key={item}>
-          <h4>{item.title}</h4>
+      {post.map((item, i) => (
+        <div className="list-item" key={i}>
+          <Link href={`/detail/${item._id}`}> <h4>{item.title}</h4>
+          </Link>
           <p>{item.content}</p>
         </div>
       ))}
