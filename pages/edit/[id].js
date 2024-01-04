@@ -1,9 +1,8 @@
-import React from 'react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from "next/link";
+import Link from 'next/link';
 
-export default function Edit () {
+export default function Edit() {
   const [post, setPost] = useState([]);
   const router = useRouter();
 
@@ -15,27 +14,30 @@ export default function Edit () {
     }
     fetchData();
   }, []);
-  const postFilter = post.filter((item)=> router.query.id === item._id)
-  
-  return(
+  const postFilter = post.filter((item) => router.query.id === item._id);
+
+  return (
     <div>
       <h4>글 수정하기</h4>
-      {
-      postFilter.map((item)=>{
-        return(
+      {postFilter.map((item) => {
+        return (
           <div>
-            <form action='/api/post/edit' method='POST'>
-            <input name='title' defaultValue={item.title}/>
-            <input name='content' defaultValue={item.content}/>
-            <input style={{display:'none'}} name='_id' defaultValue={item._id.toString()}/>
-            <button type='submit'>수정</button>
+            <form action="/api/post/edit" method="POST">
+              <input name="title" defaultValue={item.title} />
+              <input name="content" defaultValue={item.content} />
+              <input
+                style={{ display: 'none' }}
+                name="_id"
+                defaultValue={item._id.toString()}
+              />
+              <button type="submit">수정</button>
             </form>
-            <Link href={`/List`}><button>취소</button></Link>
+            <Link href={`/List`}>
+              <button>취소</button>
+            </Link>
           </div>
-        )
-      })
-      }
-    
+        );
+      })}
     </div>
-  )
+  );
 }
