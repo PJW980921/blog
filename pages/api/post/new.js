@@ -13,7 +13,7 @@ export default async function newHandler(req, res) {
   try {
     await client.connect();
     const db = client.db('blog');
-    const posts = await db.collection('post').insertOne(req.body);
+    await db.collection('post').insertOne(req.body);
     return res.status(200).redirect('/List');
   } catch (error) {
     res.status(500).json({ error: '데이터를 불러오는데 실패 했습니다.' });

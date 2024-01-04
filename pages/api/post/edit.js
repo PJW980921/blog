@@ -15,7 +15,7 @@ export default async function editHandler(req, res) {
   try {
     await client.connect();
     const db = client.db('blog');
-    const posts = await db.collection('post').updateOne(filter,{$set:setReqObj});
+   await db.collection('post').updateOne(filter,{$set:setReqObj});
     return res.status(200).redirect('/List');
   } catch (error) {
     res.status(500).json({ error: '수정을 하는데 실패 했습니다.' });

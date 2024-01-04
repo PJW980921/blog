@@ -8,7 +8,7 @@ export default function Edit() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('/api/post');
+      const response = await fetch('/api/getList');
       const data = await response.json();
       setPost(data);
     }
