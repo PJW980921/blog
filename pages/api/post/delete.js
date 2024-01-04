@@ -1,7 +1,7 @@
 import { MongoClient,ObjectId } from 'mongodb';
 
 export default async function deleteHandler(req, res) {
-  const url = 'mongodb+srv://admin:blog1644@cluster0.ebcae3z.mongodb.net/';
+  const url = 'mongodb+srv://admin:baaaaa@cluster0.ebcae3z.mongodb.net/';
   const client = new MongoClient(url);
   const filter = { _id: new ObjectId(req.body) };
   if (req.method === 'DELETE') {
