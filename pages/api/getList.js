@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 export default async function handler(req, res) {
-  const url = 'mongodb+srv://admin:blog1644@cluster0.ebcae3z.mongodb.net/';
+  const url = 'mongodb+srv://admin:aaaaaaa@cluster0.ebcae3z.mongodb.net/';
   const client = new MongoClient(url);
   try {
     await client.connect();
